@@ -62,7 +62,6 @@ class TestBooksCollector:
     def test_add_book_in_favorites_book_not_add_again(self, collection):
         name = 'Парень из колорадо'
         collection.add_new_book(name)
-        collection.set_book_genre(name, 'Детективы')
         collection.add_book_in_favorites(name)
         collection.add_book_in_favorites(name)
         assert len(collection.favorites) == 1
@@ -70,7 +69,6 @@ class TestBooksCollector:
     def test_delete_book_from_favorites_name_not_in_favorites_not_delete(self, collection):
         name = 'Парень из колорадо'
         collection.add_new_book(name)
-        collection.set_book_genre(name, 'Детективы')
         collection.add_book_in_favorites(name)
         collection.delete_book_from_favorites('Дюна')
         assert collection.favorites == [name]
@@ -78,6 +76,16 @@ class TestBooksCollector:
     def test_get_list_of_favorites_books_return_list(self, collection):
         name = 'Парень из колорадо'
         collection.add_new_book(name)
-        collection.set_book_genre(name, 'Детективы')
         collection.add_book_in_favorites(name)
         assert collection.get_list_of_favorites_books() == [name]
+
+    def test_add_new_book_add_one_book(self, collection):
+        name = 'Парень из колорадо'
+        collection.add_new_book(name)
+        assert collection.books_genre == {name: ''}
+
+    def test_add_book_in_favorites_add_one_book_value_added(self, collection):
+        name = 'Парень из колорадо'
+        collection.add_new_book(name)
+        collection.add_book_in_favorites(name)
+        assert collection.favorites == [name]

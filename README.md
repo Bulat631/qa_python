@@ -22,3 +22,7 @@
 # def test_delete_book_from_favorites_name_not_in_favorites_not_delete(self, collection) - проверил что метод не срабатывает если передать книгу которой нет в избранном
 
 # def test_get_list_of_favorites_books_return_list(self, collection) - проверил что метод успешно возращает список избранных книг в нужной формате
+    
+# def test_add_new_book_add_one_book(self, collection) - проверил что метод успешно добавляет книгу в словарь books_genre
+
+# def test_add_book_in_favorites_add_one_book_value_added(self, collection) - проверил что метод успешно добавил книгу в избранное
